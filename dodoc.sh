@@ -25,7 +25,7 @@ exec >:doc.log 2>&1
 
 ID=$(cd "$MASTERREPO" && git rev-parse --verify refs/heads/master) || exit $?
 
-tmp=`pwd`/.doctmp-$$
+tmp=$(pwd)/.doctmp-$$
 trap 'rm -f "$tmp".*' 0
 
 (
@@ -86,11 +86,11 @@ DIFF=diff
 export DIFF
 
 make \
-	-C Documentation -j 2 $dd \
+	-C Documentation -j 2 "$dd" \
 	WEBDOC_DEST="$DOCREPO/doc-html-inst" install-webdoc || exit
 
 make \
-	-C Documentation -j 2 $dd \
+	-C Documentation -j 2 "$dd" \
 	man1="$DOCREPO/doc-man-inst/man1" \
 	man5="$DOCREPO/doc-man-inst/man5" \
 	man7="$DOCREPO/doc-man-inst/man7" \

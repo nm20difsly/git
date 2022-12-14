@@ -68,6 +68,6 @@ do
 	t=$(git show -s --format="%ci" "$old^0" | sed -e "s/ .*//")
 	ocommitcnt=$commitcnt
 	test -z "$head" || echo "$head"
-	printf "$fmt" $new $n $i $c $cc $commitcnt $t
+	printf "$fmt" "$new" "$n" "$i" "$c" $cc "$commitcnt" "$t"
 	head=
 done
